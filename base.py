@@ -360,3 +360,4 @@ exporta_html(fig, 'Estrutura POS')
 fig = go.Figure()
 df_vol_f = pd.DataFrame()
 elapsed_time = time.time() - start_time
+print('Tempo de execução: ' + str(round(elapsed_time,4)) + 's')
