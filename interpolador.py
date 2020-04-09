@@ -3,6 +3,7 @@
 class interpolador:
     def __init__(self, p, df, column, dc=252):
         self.df = df
+        self.column = column
         self.p = p
         self.dc = dc
         self.x_axis = list(df.index)
@@ -41,3 +42,13 @@ class interpolador:
             return y1+(p-x1)*(y2-y1)/(x2-x1)
         else:
             return y1
+    
+    def multi_intp(self, arr=[], t='exp'):
+        interpolados=[]
+        obj_intp = interpolador(arr[0],self.df,self.column,dc=self.dc)
+        for x in range(len(arr)):
+            obj_intp.p = arr[x]
+            obj_intp._config(arr[x])
+            if t.lower()=='exp': interpolados.append(obj_intp.exp())
+            elif t.lower()=='lin': interpolados.append(obj_intp.lin())
+        return interpolados
