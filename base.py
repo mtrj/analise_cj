@@ -164,8 +164,6 @@ def fundo_transparente(figura):
 def exporta_html(figura, nome): 
     pio.write_html(figura, file=nome+'.html', auto_open=False)
 
-
-objdg = base()
 objdg = base()
 dg = base().gera_df_geral()
 
